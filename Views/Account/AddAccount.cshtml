@@ -1,0 +1,42 @@
+@using Bookkeeping.Enums;
+@model Bookkeeping.Models.Account
+
+<div>
+    <form>
+        Account Number: <input type="number" name="number" />
+        Account Name: <input type="text" name="name" />
+        <div class="form-group">
+            <label asp-for="AccountType"></label>
+            <select id="dropdown" asp-for="AccountType" asp-items="Html.GetEnumSelectList<AccountType>()"></select>
+        </div>
+        <div>
+            <div id="message">
+                Is this an accounts receivable?
+            </div>
+            <input id="subledger" type="checkbox" />
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        document.addEventListener('input', function () {
+    if (document.querySelector('#dropdown').value == 0) {
+        document.getElementById('message').style.display = "block";
+        document.getElementById('subledger').style.display = "block";
+        document.getElementById('message').innerHTML = "Is this an accounts receivable?";
+    }
+    else if (document.querySelector('#dropdown').value == 1) {
+        document.getElementById('message').style.display = "block";
+        document.getElementById('subledger').style.display = "block";
+        document.getElementById('message').innerHTML = "Is this an accounts payable?";
+    }
+    else {
+        document.getElementById('message').style.display = "none";
+        document.getElementById('subledger').style.display = "none";
+    }
+    console.log(document.querySelector('#dropdown').value);
+
+}, false);
+    </script>
+ }

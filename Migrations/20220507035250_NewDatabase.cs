@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Programs.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class NewDatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,8 +13,7 @@ namespace Programs.Migrations
                 name: "Accounts",
                 columns: table => new
                 {
-                    Number = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Number = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ProcessIn = table.Column<int>(type: "int", nullable: false),
                     AccountType = table.Column<int>(type: "int", nullable: false)
@@ -31,34 +30,23 @@ namespace Programs.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    AccountNumber = table.Column<int>(type: "int", nullable: false),
+                    AccountNumber = table.Column<double>(type: "float", nullable: false),
                     Amount = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Memo = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Transactions", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Transactions_Accounts_AccountNumber",
-                        column: x => x.AccountNumber,
-                        principalTable: "Accounts",
-                        principalColumn: "Number",
-                        onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Transactions_AccountNumber",
-                table: "Transactions",
-                column: "AccountNumber");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Transactions");
+                name: "Accounts");
 
             migrationBuilder.DropTable(
-                name: "Accounts");
+                name: "Transactions");
         }
     }
 }

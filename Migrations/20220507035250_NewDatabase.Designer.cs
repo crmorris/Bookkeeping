@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Programs.Migrations
 {
     [DbContext(typeof(BookkeepingContext))]
-    [Migration("20220504055843_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220507035250_NewDatabase")]
+    partial class NewDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -27,10 +27,7 @@ namespace Programs.Migrations
             modelBuilder.Entity("Bookkeeping.Models.Account", b =>
                 {
                     b.Property<int>("Number")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Number"), 1L, 1);
 
                     b.Property<int>("AccountType")
                         .HasColumnType("int");
@@ -55,8 +52,8 @@ namespace Programs.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("AccountNumber")
-                        .HasColumnType("int");
+                    b.Property<double>("AccountNumber")
+                        .HasColumnType("float");
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("decimal(18,2)");
@@ -70,20 +67,7 @@ namespace Programs.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AccountNumber");
-
                     b.ToTable("Transactions");
-                });
-
-            modelBuilder.Entity("Bookkeeping.Models.Transaction", b =>
-                {
-                    b.HasOne("Bookkeeping.Models.Account", "Account")
-                        .WithMany()
-                        .HasForeignKey("AccountNumber")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Account");
                 });
 #pragma warning restore 612, 618
         }

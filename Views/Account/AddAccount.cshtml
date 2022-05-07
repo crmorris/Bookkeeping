@@ -2,9 +2,9 @@
 @model Bookkeeping.Models.Account
 
 <div>
-    <form>
-        Account Number: <input type="number" name="number" />
-        Account Name: <input type="text" name="name" />
+    <form method="post" asp-controller="Account" asp-action="PostAccount">
+        Account Number: <input type="number" name="accountNumber" />
+        Account Name: <input type="text" name="accountName" />
         <div class="form-group">
             <label asp-for="AccountType"></label>
             <select id="dropdown" asp-for="AccountType" asp-items="Html.GetEnumSelectList<AccountType>()"></select>
@@ -15,6 +15,7 @@
             </div>
             <input id="subledger" type="checkbox" />
         </div>
+        <button type="submit">Submit</button>
     </form>
 </div>
 

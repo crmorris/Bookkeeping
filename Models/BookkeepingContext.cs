@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Programs.ViewModels;
 
 namespace Bookkeeping.Models
 {

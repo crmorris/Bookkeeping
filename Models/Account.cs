@@ -8,10 +8,11 @@ namespace Bookkeeping.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int Number { get; set; }
+        public int AccountId { get; set; }
         public string Name { get; set; }
         public Subledger ProcessIn {get; set;} = Bookkeeping.Enums.Subledger.GL;
         public AccountType AccountType {get; set;}
+        public List<Transaction>? Transactions { get; set; }
 
     }
 }

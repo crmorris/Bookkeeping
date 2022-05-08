@@ -32,7 +32,7 @@ namespace Programs.Controllers
                         {
                             list.Add(new Transaction {
                                 Date = worksheet.Cells[row,1].GetValue<System.DateTime>(),
-                                AccountNumber = worksheet.Cells[row,2].GetValue<double>(),
+                                AccountId = worksheet.Cells[row,2].GetValue<int>(),
                                 Amount = worksheet.Cells[row,3].GetValue<decimal>(),
                                 Memo = worksheet.Cells[row,4].GetValue<string>(),
 

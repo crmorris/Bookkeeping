@@ -30,7 +30,7 @@ public class AccountController : Controller
     public Account PostAccount(int accountNumber, string accountName, Subledger subledger, AccountType accountType)
     {
         Account account = new Account();
-        account.Number = accountNumber;
+        account.AccountId = accountNumber;
         account.Name = accountName;
         account.ProcessIn = subledger;
         account.AccountType = accountType;

@@ -39,7 +39,7 @@ namespace Programs.Migrations
 
                     b.HasKey("AccountId");
 
-                    b.ToTable("Accounts");
+                    b.ToTable("Accounts", (string)null);
                 });
 
             modelBuilder.Entity("Bookkeeping.Models.Transaction", b =>
@@ -67,7 +67,7 @@ namespace Programs.Migrations
 
                     b.HasIndex("AccountId");
 
-                    b.ToTable("Transactions");
+                    b.ToTable("Transactions", (string)null);
                 });
 
             modelBuilder.Entity("Bookkeeping.Models.Transaction", b =>

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "XuOyOeoCp+/VjALUX8RjhxLIbTDRjESZ6liBQ+VoSLw=",
+  "Hash": "x5vM4NmN5l4QvKMiAlMqDXvYi/6D3OQ7RerLeEcM6bs=",
   "Source": "Programs",
   "BasePath": "_content/Programs",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Charles\\Desktop\\Self-Improvement\\Programs\\Bookkeeping\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Programs.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\Charles\\Desktop\\Self-Improvement\\Programs\\Bookkeeping\\wwwroot\\css\\Report.css",
+      "SourceId": "Programs",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Charles\\Desktop\\Self-Improvement\\Programs\\Bookkeeping\\wwwroot\\",
+      "BasePath": "_content/Programs",
+      "RelativePath": "css/Report.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Report.css"
     },
     {
       "Identity": "C:\\Users\\Charles\\Desktop\\Self-Improvement\\Programs\\Bookkeeping\\wwwroot\\css\\site.css",

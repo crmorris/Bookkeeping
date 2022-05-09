@@ -4,6 +4,10 @@
     ViewData["Title"] = "TransactionReport";
 }
 
+<head>
+    <link rel="stylesheet" href="~/Programs/wwwroot/css/Report.css" />
+</head>
+
 <h1>TransactionReport</h1>
 
 <p>
@@ -15,22 +19,17 @@
             <th></th>
         </tr>
     </thead>
-    <tbody>
+    <tbody class="grid-container">
 @foreach (var item in Model) {
         <tr>
-            <td>
+            <td class="grid-item grid-item-1">
                 @item.Id
             </td>
-            <td>
+            <td class="grid-item grid-item-2">
                 @item.Account.Name
             </td>
-            <td style:"text-align:right">
+            <td class="grid-item grid-item-3 amounts">
                 @item.Transaction.Amount
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }

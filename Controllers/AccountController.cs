@@ -49,6 +49,14 @@ public class AccountController : Controller
         return View(account);
     }
 
+    [HttpPost]
+    public ActionResult<Account> Edit(Account account)
+    {
+        _db.Update(account);
+        _db.SaveChanges();
+        return View("~/Views/Home/Index.cshtml");
+    }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {

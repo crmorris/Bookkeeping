@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Programs.ViewModels;
+using Programs.Models;
 
 namespace Bookkeeping.Models
 {
@@ -12,5 +13,6 @@ namespace Bookkeeping.Models
 
         public DbSet<Account> Accounts {get; set;}
         public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<Programs.Models.Temporary> Temporary { get; set; }
     }
 }

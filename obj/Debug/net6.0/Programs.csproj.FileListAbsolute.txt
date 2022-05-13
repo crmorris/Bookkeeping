@@ -269,4 +269,6 @@ C:\Users\Charles\Desktop\Self-Improvement\Programs\Bookkeeping\obj\Debug\net6.0\
 C:\Users\Charles\Desktop\Self-Improvement\Programs\Bookkeeping\obj\Debug\net6.0\Programs.csproj.ResolveComReference.cache
 C:\Users\Charles\Desktop\Self-Improvement\Programs\Bookkeeping\obj\Debug\net6.0\Programs.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Charles\Desktop\Self-Improvement\Programs\Bookkeeping\bin\Debug\net6.0\EPPlus.dll
-C:\Users\Charles\Desktop\Self-Improvement\Programs\Bookkeeping\bin\Debug\net6.0\System.Xml.XPath.XmlDocument.dll
+C:\Users\Charles\Desktop\Self-Improvement\Programs\Bookkeeping\bin\Debug\net6.0\EPPlus.Interfaces.dll
+C:\Users\Charles\Desktop\Self-Improvement\Programs\Bookkeeping\bin\Debug\net6.0\EPPlus.System.Drawing.dll
+C:\Users\Charles\Desktop\Self-Improvement\Programs\Bookkeeping\bin\Debug\net6.0\Microsoft.IO.RecyclableMemoryStream.dll

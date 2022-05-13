@@ -10,10 +10,10 @@ namespace Programs.Controllers
 {
     public class ReportController : Controller
     {
-        private readonly ILogger<AccountController> _logger;
+        private readonly ILogger<AccountsController> _logger;
         private readonly BookkeepingContext _db;
 
-        public ReportController(ILogger<AccountController> logger, BookkeepingContext db)
+        public ReportController(ILogger<AccountsController> logger, BookkeepingContext db)
         {
             _logger = logger;
             _db = db;
@@ -22,7 +22,7 @@ namespace Programs.Controllers
         [HttpGet]
         public ActionResult GetTransactionReport()
         {
-                var query = from t in _db.Transactions
+            var query = from t in _db.Transactions
                         from a in _db.Accounts
                         where a.AccountId == t.AccountId
                         select new AccountTransactionViewModel

@@ -13,6 +13,5 @@ namespace Bookkeeping.Models
 
         public DbSet<Account> Accounts {get; set;}
         public DbSet<Transaction> Transactions { get; set; }
-        public DbSet<Programs.Models.Temporary> Temporary { get; set; }
     }
 }

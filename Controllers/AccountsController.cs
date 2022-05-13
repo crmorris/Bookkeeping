@@ -1,5 +1,4 @@
-﻿#nullable disable
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -7,89 +6,90 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Bookkeeping.Models;
-using Programs.Models;
 
 namespace Programs.Controllers
 {
-    public class TemporariesController : Controller
+    public class AccountsController : Controller
     {
         private readonly BookkeepingContext _context;
 
-        public TemporariesController(BookkeepingContext context)
+        public AccountsController(BookkeepingContext context)
         {
             _context = context;
         }
 
-        // GET: Temporaries
+        // GET: Accounts
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Temporary.ToListAsync());
+              return _context.Accounts != null ? 
+                          View(await _context.Accounts.ToListAsync()) :
+                          Problem("Entity set 'BookkeepingContext.Accounts'  is null.");
         }
 
-        // GET: Temporaries/Details/5
+        // GET: Accounts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
+            if (id == null || _context.Accounts == null)
             {
                 return NotFound();
             }
 
-            var temporary = await _context.Temporary
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (temporary == null)
+            var account = await _context.Accounts
+                .FirstOrDefaultAsync(m => m.AccountId == id);
+            if (account == null)
             {
                 return NotFound();
             }
 
-            return View(temporary);
+            return View(account);
         }
 
-        // GET: Temporaries/Create
+        // GET: Accounts/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Temporaries/Create
+        // POST: Accounts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FirstName,Value")] Temporary temporary)
+        public async Task<IActionResult> Create([Bind("AccountId,Name,ProcessIn,AccountType")] Account account)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(temporary);
+                _context.Add(account);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(temporary);
+            return View(account);
         }
 
-        // GET: Temporaries/Edit/5
+        // GET: Accounts/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
+            if (id == null || _context.Accounts == null)
             {
                 return NotFound();
             }
 
-            var temporary = await _context.Temporary.FindAsync(id);
-            if (temporary == null)
+            var account = await _context.Accounts.FindAsync(id);
+            if (account == null)
             {
                 return NotFound();
             }
-            return View(temporary);
+            return View(account);
         }
 
-        // POST: Temporaries/Edit/5
+        // POST: Accounts/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,Value")] Temporary temporary)
+        public async Task<IActionResult> Edit(int id, [Bind("AccountId,Name,ProcessIn,AccountType")] Account account)
         {
-            if (id != temporary.Id)
+            if (id != account.AccountId)
             {
                 return NotFound();
             }
@@ -98,12 +98,12 @@ namespace Programs.Controllers
             {
                 try
                 {
-                    _context.Update(temporary);
+                    _context.Update(account);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!TemporaryExists(temporary.Id))
+                    if (!AccountExists(account.AccountId))
                     {
                         return NotFound();
                     }
@@ -114,41 +114,49 @@ namespace Programs.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(temporary);
+            return View(account);
         }
 
-        // GET: Temporaries/Delete/5
+        // GET: Accounts/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
+            if (id == null || _context.Accounts == null)
             {
                 return NotFound();
             }
 
-            var temporary = await _context.Temporary
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (temporary == null)
+            var account = await _context.Accounts
+                .FirstOrDefaultAsync(m => m.AccountId == id);
+            if (account == null)
             {
                 return NotFound();
             }
 
-            return View(temporary);
+            return View(account);
         }
 
-        // POST: Temporaries/Delete/5
+        // POST: Accounts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var temporary = await _context.Temporary.FindAsync(id);
-            _context.Temporary.Remove(temporary);
+            if (_context.Accounts == null)
+            {
+                return Problem("Entity set 'BookkeepingContext.Accounts'  is null.");
+            }
+            var account = await _context.Accounts.FindAsync(id);
+            if (account != null)
+            {
+                _context.Accounts.Remove(account);
+            }
+            
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TemporaryExists(int id)
+        private bool AccountExists(int id)
         {
-            return _context.Temporary.Any(e => e.Id == id);
+          return (_context.Accounts?.Any(e => e.AccountId == id)).GetValueOrDefault();
         }
     }
 }
